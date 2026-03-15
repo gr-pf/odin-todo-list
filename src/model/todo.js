@@ -9,7 +9,7 @@ export class Todo {
   #content;
   #date;
   #priority;
-  #tags = [];
+  #tags = new Set();
   #id;
   #state;
 
@@ -86,7 +86,9 @@ export class Todo {
     this.#content = content;
     this.#date = date;
     this.#priority = priority;
-    this.#tags = tags ? [...tags] : this.#tags;
+    this.#tags = tags
+      ? new Set(Array.isArray(tags) ? tags : [tags])
+      : this.#tags;
     this.#id = crypto.randomUUID();
     this.#state = 0;
   }
@@ -138,4 +140,19 @@ export class Todo {
   toggleState() {
     this.#state = !this.#state ? 1 : 0;
   }
+
+  addTag(tag) {
+    this.#tags.add(tag);
+  }
+
+  removeTag(tag) {
+    this.#tags.delete(tag);
+  }
 }
+
+// const newTodo = new Todo("Nom", undefined, undefined, undefined, [
+//   "travail",
+//   "famille",
+// ]);
+// console.log(newTodo.name);
+// console.log(newTodo.tags);
