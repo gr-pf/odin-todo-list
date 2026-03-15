@@ -43,5 +43,10 @@ export class Todo {
     this.priority = priority;
     this.tags = tags;
     this.id = crypto.randomUUID();
+    this.state = 0;
+  }
+
+  toggleState() {
+    this.state = !this.state ? 1 : 0;
   }
 }
