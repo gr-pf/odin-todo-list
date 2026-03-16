@@ -20,6 +20,9 @@ export class Todo {
    * @param {string} name
    */
   static #validateName(name) {
+    if (name === undefined) {
+      throw new TypeError(`name est requis`);
+    }
     if (typeof name !== "string") {
       throw new TypeError(
         `name doit être une chaine valide, reçu : ${name} (${typeof name})`,
