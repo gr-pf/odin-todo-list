@@ -3,6 +3,8 @@ import { Todo } from "./todo.js";
 export const TODO_LIST = {};
 
 export class TodoList {
+  #tags = new Set();
+
   constructor() {
     this.todoList = new Map();
   }
@@ -29,6 +31,10 @@ export class TodoList {
     } else {
       this.todoList.delete(Todo.id);
     }
+  }
+
+  get tags() {
+    return this.#tags;
   }
 }
 
