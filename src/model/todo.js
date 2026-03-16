@@ -76,7 +76,7 @@ export class Todo {
    * @param {?string} priority
    * @param {Array.<string>|string|undefined} tags
    */
-  constructor(name, content, date, priority = null, tags) {
+  constructor({ name, content, date, priority = null, tags } = {}) {
     Todo.#validateName(name);
     Todo.#validateContent(content);
     Todo.#validateDate(date);
@@ -149,10 +149,3 @@ export class Todo {
     this.#tags.delete(tag);
   }
 }
-
-// const newTodo = new Todo("Nom", undefined, undefined, undefined, [
-//   "travail",
-//   "famille",
-// ]);
-// console.log(newTodo.name);
-// console.log(newTodo.tags);
