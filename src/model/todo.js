@@ -25,7 +25,7 @@ export class Todo {
         `name doit être une chaine valide, reçu : ${name} (${typeof name})`,
       );
     }
-    if (!/^[\p{L}][\p{L}\-\s]*[\p{L}]$|^[\p{L}]$/u.test(name)) {
+    if (!/^[\p{L}][\p{L}\-\s\d]*[\p{L}\d]$|^[\p{L}]$/u.test(name)) {
       throw new RangeError(
         `name doit être une chaine valide comprenant des lettres (avec accent) ou des espaces, reçu : ${name}`,
       );
