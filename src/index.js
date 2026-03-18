@@ -1,5 +1,6 @@
 import { TodoList } from "./model/todo-list.js";
 import { Todo } from "./model/todo.js";
+import "./style.css";
 
 const TODO_LIST = new TodoList();
 window.TODO_LIST = TODO_LIST;
