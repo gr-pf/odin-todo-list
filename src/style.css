@@ -2,21 +2,19 @@
 *::before,
 *::after {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
   line-height: calc(1em + 0.5rem); /*option*/
 }
 
-img,
-picture,
-video,
-canvas,
-svg {
-  display: block;
-  max-width: 100%;
+:root {
+  --primary-color: hsl(0, 0%, 100%);
+  --secondary-color: hsl(30, 40%, 98%);
+  --contrast-color: hsl(hsl(0, 0%, 0%));
+  --accent-color: hsl(6, 72%, 56%);
 }
 
-input,
-button,
-textarea,
-select {
-  font: inherit;
+.wrapper {
+  display: grid;
+  grid-template-columns: 200px + 1fr;
 }
