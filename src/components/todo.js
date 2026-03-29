@@ -1,6 +1,6 @@
 // file : src/components/todo.js
 
-import { Todo } from "./model/todo.js";
+import { Todo } from "../model/todo.js";
 
 // Implémentation à terminer
 
