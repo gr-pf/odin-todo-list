@@ -8,8 +8,10 @@ window.TODO_LIST = TODO_LIST;
 
 const todo01 = new Todo({
   name: "todo-one1",
+  priority: "medium",
+  date: new Date(2026, 2, 25),
   content: "Ceci est un contenu test",
-  tags: "work",
+  tags: ["cine", "tv", "work"],
 });
 const todo02 = new Todo({ name: "todo-two", tags: ["cine", "tv"] });
 const todo03 = new Todo({ name: "todo-three", tags: ["food", "tv"] });
