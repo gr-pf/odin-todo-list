@@ -12,6 +12,10 @@
   --secondary-color: hsl(30, 40%, 98%);
   --contrast-color: hsl(hsl(0, 0%, 0%));
   --accent-color: hsl(6, 72%, 56%);
+  --grey-color: hsl(0, 0%, 68%);
+
+  --font-size-normal: 1rem;
+  --font-size-little: 0.8rem;
 
   font-family:
     Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
@@ -56,4 +60,54 @@ li {
 
 .tags-title {
   font: inherit;
+}
+
+.todo-list {
+  display: grid;
+  margin-inline: 1rem;
+  margin-top: 1rem;
+}
+.todo-item {
+  border-width: 1px 0 0 0;
+  border-style: solid;
+  border-color: var(--grey-color);
+}
+
+.todo-wrapper {
+  display: grid;
+  grid-template-columns: 30px 1fr;
+  grid-template-rows: auto;
+  grid-template-areas:
+    "chexbox name"
+    ". desc"
+    ". attributes";
+  column-gap: 0.5rem;
+}
+
+.todo-checkbox {
+  place-self: center;
+  grid-area: chexbox;
+}
+
+.todo-name {
+  grid-area: name;
+}
+
+.todo-content {
+  grid-area: desc;
+  font-size: var(--font-size-little);
+  color: var(--grey-color);
+}
+
+.todo-attributes {
+  grid-area: attributes;
+  font-size: var(--font-size-little);
+  color: var(--grey-color);
+  display: flex;
+  gap: 0.8rem;
+}
+
+.todo-tags {
+  display: flex;
+  gap: 0.5rem;
 }
