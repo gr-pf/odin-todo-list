@@ -1,6 +1,7 @@
 import { TodoList } from "./model/todo-list.js";
 import { Todo } from "./model/todo.js";
 import { renderTodo } from "./components/todo.js";
+import { renderFormTodo } from "./components/add-todo-form.js";
 import "./style.css";
 
 const TODO_LIST = new TodoList();
@@ -37,3 +38,4 @@ const ulTodoList = document.querySelector(".todo-list");
 newList.todoList.forEach((todo, id) =>
   ulTodoList.appendChild(renderTodo(todo)),
 );
+ulTodoList.appendChild(renderFormTodo(newList));
