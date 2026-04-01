@@ -38,4 +38,8 @@ const ulTodoList = document.querySelector(".todo-list");
 newList.todoList.forEach((todo, id) =>
   ulTodoList.appendChild(renderTodo(todo)),
 );
-ulTodoList.appendChild(renderFormTodo(newList));
+//ulTodoList.appendChild(renderFormTodo(newList));
+const modal = renderFormTodo(newList);
+const main = document.querySelector(".main");
+main.appendChild(modal);
+modal.showModal();
