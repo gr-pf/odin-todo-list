@@ -7,10 +7,10 @@ import { TodoList } from "../model/todo-list.js";
  * @returns {HTMLElement}
  */
 export function renderFormTodo(todolist) {
-  const liFormTodo = document.createElement("div");
-  liFormTodo.classList = "form-todo-wrapper";
+  const dialogFormTodo = document.createElement("dialog");
+  dialogFormTodo.classList = "form-todo-wrapper";
 
-  liFormTodo.innerHTML = `
+  dialogFormTodo.innerHTML = `
     <form class="form-todo">
         <label for="todo-name">Nom de la ToDo</label>
         <input type="text" id="todo-name" name="todo-name" required></input>
@@ -31,7 +31,7 @@ export function renderFormTodo(todolist) {
   `;
 
   if (todolist.tags) {
-    const form = liFormTodo.querySelector(".form-todo");
+    const form = dialogFormTodo.querySelector(".form-todo");
     const tagsEl = document.createElement("div");
     tagsEl.classList = "tags";
     form.appendChild(tagsEl);
@@ -47,16 +47,6 @@ export function renderFormTodo(todolist) {
       tagsEl.appendChild(input);
       tagsEl.appendChild(label);
     }
-    return liFormTodo;
+    return dialogFormTodo;
   }
 }
-/*
-"high", "medium", "low"
-#name;
-#content;
-#date;
-#priority;
-#tags = new Set();
-#id;
-#state;
-*/
