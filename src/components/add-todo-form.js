@@ -12,31 +12,33 @@ export function renderFormTodo(todolist) {
 
   dialogFormTodo.innerHTML = `
     <form class="form-todo">
-        <label for="todo-name">Nom de la ToDo</label>
-        <input type="text" id="todo-name" name="todo-name" required></input>
-        <label for="todo-content">Description de la ToDo</label>
-        <input type="textarea" id="todo-content" name="todo-content"></input>
-        <label for="todo-date">Date de la ToDo</label>
-        <input type="date" id="todo-date" name="todo-date"></input>
-        <label for="todo-priority">Priorité :</label>
-        <select id="todo-priority" name="todo-priority">
+        <label for="form-todo-name">Nom de la ToDo</label>
+        <input type="text" id="form-todo-name" name="form-todo-name" required></input>
+        <label for="form-todo-content">Description de la ToDo</label>
+        <input type="textarea" id="form-todo-content" name="form-todo-content"></input>
+        <label for="form-todo-date">Date de la ToDo</label>
+        <input type="date" id="form-todo-date" name="form-todo-date"></input>
+        <label for="form-todo-priority">Priorité :</label>
+        <select id="form-todo-priority" name="form-todo-priority">
         <option value=""></option>
         <option value="high">haute</option>
         <option value="medium">moyenne</option>
         <option value="low">basse</option>
         </select >
-        <label for="todo-add-tag">Ajouter un tag</label>
-        <input type="text" id="todo-add-tag" name="todo-add-tag"></input>
+        <label for="form-todo-add-tag">Ajouter un tag</label>
+        <input type="text" id="form-todo-add-tag" name="form-todo-add-tag"></input>
     </form>
   `;
 
+  const form = dialogFormTodo.querySelector(".form-todo");
   if (todolist.tags) {
-    const form = dialogFormTodo.querySelector(".form-todo");
     const tagsEl = document.createElement("div");
-    tagsEl.classList = "tags";
+    tagsEl.classList = "form-todo-tags";
     form.appendChild(tagsEl);
     const tags = Array.from(todolist.tags);
     for (let i = 0; i < tags.length; i++) {
+      const tagSpan = document.createElement("span");
+      tagSpan.classList = "form-todo-tag";
       const label = document.createElement("label");
       label.htmlFor = `${tags[i]}`;
       label.textContent = `${tags[i]}`;
@@ -44,9 +46,17 @@ export function renderFormTodo(todolist) {
       input.type = "checkbox";
       input.name = `${tags[i]}`;
       input.value = `${tags[i]}`;
-      tagsEl.appendChild(input);
-      tagsEl.appendChild(label);
+      tagSpan.appendChild(input);
+      tagSpan.appendChild(label);
+      tagsEl.appendChild(tagSpan);
     }
+
+    const submitBtn = document.createElement("input");
+    form.appendChild(submitBtn);
+    submitBtn.type = "submit";
+    submitBtn.value = "Créer ToDo";
+    submitBtn.classList = "form-todo-btn";
+
     return dialogFormTodo;
   }
 }
