@@ -42,4 +42,10 @@ newList.todoList.forEach((todo, id) =>
 const modal = renderFormTodo(newList);
 const main = document.querySelector(".main");
 main.appendChild(modal);
+const rect = main.getBoundingClientRect();
+console.log(rect);
+
+//modal.style.marginLeft = `calc(${rect.right} - ${rect.left})px`;
+modal.style.translate = `${rect.left})px`;
+
 modal.showModal();
