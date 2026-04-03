@@ -151,4 +151,17 @@ export class Todo {
   removeTag(tag) {
     this.#tags.delete(tag);
   }
+
+  toString() {
+    return `Instance de classe Todo :
+  {
+    name: ${this.#name};
+    content: ${this.#content};
+    date: ${this.#date};
+    priority: ${this.#priority};
+    tags: ${Array.from(this.#tags).join(" - ")};
+    id: ${this.#id};
+    state: ${this.#state}; 
+  }`;
+  }
 }
