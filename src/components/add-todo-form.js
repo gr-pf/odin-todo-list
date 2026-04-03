@@ -4,18 +4,20 @@ import { TodoList } from "../model/todo-list.js";
 /**
  *
  * @param {TodoList} todolist
+ * @param {Function} onClose
+ * @param {Function} onSubmit
  * @returns {HTMLElement}
  */
-export function renderFormTodo(todolist) {
+export function renderFormTodo(todolist, onSubmit, onClose) {
   const dialogFormTodo = document.createElement("dialog");
   dialogFormTodo.classList = "form-todo-wrapper";
 
   dialogFormTodo.innerHTML = `
-    <form class="form-todo" method="dialog">
+    <form class="form-todo" method="dialog" action="#">
         <label for="form-todo-name">Nom de la ToDo</label>
         <input type="text" id="form-todo-name" name="form-todo-name" required></input>
         <label for="form-todo-content">Description de la ToDo</label>
-        <input type="textarea" id="form-todo-content" name="form-todo-content"></input>
+        <input type="text" id="form-todo-content" name="form-todo-content"></input>
         <label for="form-todo-date">Date de la ToDo</label>
         <input type="date" id="form-todo-date" name="form-todo-date"></input>
         <label for="form-todo-priority">Priorité :</label>
@@ -31,7 +33,7 @@ export function renderFormTodo(todolist) {
   `;
 
   const form = dialogFormTodo.querySelector(".form-todo");
-  if (todolist.tags) {
+  if (todolist.tags.size !== 0) {
     const tagsEl = document.createElement("div");
     tagsEl.classList = "form-todo-tags";
     form.appendChild(tagsEl);
@@ -50,13 +52,16 @@ export function renderFormTodo(todolist) {
       tagSpan.appendChild(label);
       tagsEl.appendChild(tagSpan);
     }
-
-    const submitBtn = document.createElement("input");
-    form.appendChild(submitBtn);
-    submitBtn.type = "submit";
-    submitBtn.value = "Créer ToDo";
-    submitBtn.classList = "form-todo-btn";
-
-    return dialogFormTodo;
   }
+
+  const submitBtn = document.createElement("input");
+  form.appendChild(submitBtn);
+  submitBtn.type = "submit";
+  submitBtn.value = "Créer ToDo";
+  submitBtn.classList = "form-todo-btn";
+
+  dialogFormTodo.addEventListener("submit", onSubmit);
+  dialogFormTodo.addEventListener("close", onClose);
+
+  return dialogFormTodo;
 }
