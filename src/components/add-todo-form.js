@@ -17,7 +17,7 @@ export function renderFormTodo(todolist, onSubmit, onClose) {
         <label for="form-todo-name">Nom de la ToDo</label>
         <input type="text" id="form-todo-name" name="form-todo-name" required></input>
         <label for="form-todo-content">Description de la ToDo</label>
-        <input type="text" id="form-todo-content" name="form-todo-content"></input>
+        <textarea id="form-todo-content" name="form-todo-content"></textarea>
         <label for="form-todo-date">Date de la ToDo</label>
         <input type="date" id="form-todo-date" name="form-todo-date"></input>
         <label for="form-todo-priority">Priorité :</label>
