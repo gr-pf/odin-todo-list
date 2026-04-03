@@ -11,7 +11,7 @@ export function renderFormTodo(todolist) {
   dialogFormTodo.classList = "form-todo-wrapper";
 
   dialogFormTodo.innerHTML = `
-    <form class="form-todo">
+    <form class="form-todo" method="dialog">
         <label for="form-todo-name">Nom de la ToDo</label>
         <input type="text" id="form-todo-name" name="form-todo-name" required></input>
         <label for="form-todo-content">Description de la ToDo</label>
