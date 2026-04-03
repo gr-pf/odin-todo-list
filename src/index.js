@@ -2,6 +2,7 @@ import { TodoList } from "./model/todo-list.js";
 import { Todo } from "./model/todo.js";
 import { renderTodo } from "./components/todo.js";
 import { renderFormTodo } from "./components/add-todo-form.js";
+import { callForm } from "./controllers/todo.js";
 import "./style.css";
 
 const TODO_LIST = new TodoList();
@@ -39,13 +40,29 @@ newList.todoList.forEach((todo, id) =>
   ulTodoList.appendChild(renderTodo(todo)),
 );
 //ulTodoList.appendChild(renderFormTodo(newList));
-const modal = renderFormTodo(newList);
-const main = document.querySelector(".main");
-main.appendChild(modal);
-const rect = main.getBoundingClientRect();
-console.log(rect);
+// const modal = renderFormTodo(newList);
+// const main = document.querySelector(".main");
 
-//modal.style.marginLeft = `calc(${rect.right} - ${rect.left})px`;
-modal.style.translate = `${rect.left})px`;
+// export function callForm(todolist, className) {
+//   const listEl = document.querySelectorAll(`.${className}`);
+//   listEl.forEach((el) =>
+//     el.addEventListener("click", renderFormTodo(todolist)),
+//   );
+// }
 
-modal.showModal();
+//callForm("add-todo");
+
+// const className = "add-todo";
+// const listEl = document.querySelectorAll(`.${className}`);
+// listEl.forEach((el) =>
+//   el.addEventListener("click", function (e) {
+//     const form = renderFormTodo(newList, submitForm, closeForm);
+//     const main = document.querySelector("main");
+//     main.appendChild(form);
+//     form.showModal();
+//     //form.show();
+//   }),
+// );
+// console.log(listEl);
+const listEl = document.querySelector("a.add-todo");
+callForm(newList, "add-todo", "main");
