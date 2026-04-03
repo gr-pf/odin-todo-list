@@ -14,20 +14,20 @@ export function renderFormTodo(todolist, onSubmit, onClose) {
 
   dialogFormTodo.innerHTML = `
     <form class="form-todo" method="dialog" action="#">
-        <label for="form-todo-name">Nom de la ToDo</label>
+        <label for="form-todo-name">Nom de la ToDo&nbsp:</label>
         <input type="text" id="form-todo-name" name="form-todo-name" required></input>
-        <label for="form-todo-content">Description de la ToDo</label>
+        <label for="form-todo-content">Description de la ToDo&nbsp:</label>
         <textarea id="form-todo-content" name="form-todo-content"></textarea>
-        <label for="form-todo-date">Date de la ToDo</label>
+        <label for="form-todo-date">Date de la ToDo&nbsp:</label>
         <input type="date" id="form-todo-date" name="form-todo-date"></input>
-        <label for="form-todo-priority">Priorité :</label>
+        <label for="form-todo-priority">Priorité&nbsp:</label>
         <select id="form-todo-priority" name="form-todo-priority">
         <option value=""></option>
         <option value="high">haute</option>
         <option value="medium">moyenne</option>
         <option value="low">basse</option>
         </select >
-        <label for="form-todo-add-tag">Ajouter un tag</label>
+        <label for="form-todo-add-tag">Ajouter un tag&nbsp:</label>
         <input type="text" id="form-todo-add-tag" name="form-todo-add-tag"></input>
     </form>
   `;
