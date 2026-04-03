@@ -42,11 +42,12 @@ export function renderFormTodo(todolist, onSubmit, onClose) {
       const tagSpan = document.createElement("span");
       tagSpan.classList = "form-todo-tag";
       const label = document.createElement("label");
-      label.htmlFor = `${tags[i]}`;
+      label.htmlFor = `tag-${i}`;
       label.textContent = `${tags[i]}`;
       const input = document.createElement("input");
       input.type = "checkbox";
-      input.name = `${tags[i]}`;
+      input.id = `tag-${i}`;
+      input.name = `tag-${i}`;
       input.value = `${tags[i]}`;
       tagSpan.appendChild(input);
       tagSpan.appendChild(label);
