@@ -99,6 +99,6 @@ export function callForm(todolist, className, elContainer) {
  */
 export function callTodoList(todolist, element) {
   renderTodoList(todolist).forEach((el) =>
-    element.insertAdjacentElement("afterbegin", el),
+    element.insertAdjacentElement("beforebegin", el),
   );
 }
