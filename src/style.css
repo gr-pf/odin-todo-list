@@ -35,7 +35,6 @@ li {
 a {
   text-decoration: none;
   color: inherit;
-  padding: 5px;
 }
 
 .wrapper {
@@ -52,6 +51,10 @@ a {
   gap: 3rem;
 }
 
+.navbar a {
+  padding: 5px;
+}
+
 .nav-list {
   margin-left: 1.5rem;
   font-size: 1.5rem;
@@ -63,6 +66,9 @@ a {
 
 .add-todo {
   color: var(--accent-color);
+}
+h3.add-todo {
+  color: inherit;
 }
 
 .action-item a:hover {
