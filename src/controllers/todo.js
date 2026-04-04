@@ -1,6 +1,7 @@
 // file : src/controllers/todo.js
 
 import { renderFormTodo } from "../components/add-todo-form.js";
+import { renderTodoList } from "../components/todo-list.js";
 import { Todo } from "../model/todo.js";
 import { TodoList } from "../model/todo-list.js";
 
@@ -88,5 +89,16 @@ export function callForm(todolist, className, elContainer) {
   const listEl = document.querySelectorAll(`.${className}`);
   listEl.forEach((el) =>
     el.addEventListener("click", () => addFormToDom(todolist, elContainer)),
+  );
+}
+
+/**
+ *
+ * @param {TodoList} todolist
+ * @param {HTMLElement} element
+ */
+export function callTodoList(todolist, element) {
+  renderTodoList(todolist).forEach((el) =>
+    element.insertAdjacentElement("afterbegin", el),
   );
 }
