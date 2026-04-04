@@ -52,6 +52,7 @@ function createSubmitHandler(todolist) {
     const newTodo = createTodoFromForm(formObject);
     event.target.parentElement.remove();
     todolist.addTodo(newTodo);
+    callTodoList(todolist);
   };
 }
 
@@ -92,13 +93,24 @@ export function callForm(todolist, className, elContainer) {
   );
 }
 
+/////////////////////////////////////////////////////////////
+/////                                                   /////
+///// A REIMPLEMENTER AVEC DocumentFragment             /////
+///// ou replaceChildren et regarder les effets         /////
+///// de perfomane sur relayout/repaint                 /////
+/////                                                   /////
+/////////////////////////////////////////////////////////////
 /**
  *
  * @param {TodoList} todolist
  * @param {HTMLElement} element
  */
-export function callTodoList(todolist, element) {
+export function callTodoList(todolist, element = "#anchor-todolist") {
+  const elToAppend = document.querySelector(`${element}`);
+  const parentElement = elToAppend.parentElement;
+  parentElement.innerHTML = "";
+  parentElement.append(elToAppend);
   renderTodoList(todolist).forEach((el) =>
-    element.insertAdjacentElement("beforebegin", el),
+    elToAppend.insertAdjacentElement("beforebegin", el),
   );
 }
