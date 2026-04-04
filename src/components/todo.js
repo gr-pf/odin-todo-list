@@ -2,8 +2,6 @@
 
 import { Todo } from "../model/todo.js";
 
-// Implémentation à terminer
-
 /**
  *
  * @param {Todo} todo
