@@ -23,6 +23,10 @@ export class TodoList {
   }
 
   constructor() {
+    if (TodoList.instance) {
+      throw new Error("You can only create one instance!");
+    }
+    TodoList.instance = this;
     this.#todoList = new Map();
     this.#tags = new Set();
   }
@@ -81,3 +85,5 @@ export class TodoList {
     }, this);
   }
 }
+
+export const singletonTodoList = Object.freeze(new TodoList());
