@@ -119,5 +119,8 @@ export function callTodoList(todolist, element = "#anchor-todolist") {
 
 function callTagsList(todolist, element = "#navbar-tagslist") {
   const elToAppend = document.querySelector(element);
-  elToAppend.replaceChildren(elToAppend.firstChild, renderTagsList(todolist));
+  elToAppend.replaceChildren(
+    elToAppend.firstElementChild,
+    renderTagsList(todolist),
+  );
 }
