@@ -2,6 +2,7 @@
 
 import { renderFormTodo } from "../components/add-todo-form.js";
 import { renderTodoList } from "../components/todo-list.js";
+import { renderTagsList } from "../components/tags.js";
 import { Todo } from "../model/todo.js";
 import { TodoList } from "../model/todo-list.js";
 
@@ -106,11 +107,17 @@ export function callForm(todolist, className, elContainer) {
  * @param {HTMLElement} element
  */
 export function callTodoList(todolist, element = "#anchor-todolist") {
-  const elToAppend = document.querySelector(`${element}`);
+  const elToAppend = document.querySelector(element);
   const parentElement = elToAppend.parentElement;
   parentElement.innerHTML = "";
   parentElement.append(elToAppend);
   renderTodoList(todolist).forEach((el) =>
     elToAppend.insertAdjacentElement("beforebegin", el),
   );
+  callTagsList(todolist);
+}
+
+function callTagsList(todolist, element = "#navbar-tagslist") {
+  const elToAppend = document.querySelector(element);
+  elToAppend.replaceChildren(elToAppend.firstChild, renderTagsList(todolist));
 }
