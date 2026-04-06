@@ -81,11 +81,39 @@ h3.add-todo {
   background-color: hsla(from var(--accent-color) h s l / 0.5);
 }
 
-.tag-list {
-}
-
 .tags-title {
   font: inherit;
+}
+
+.tags-list {
+  margin-left: 0.3rem;
+  margin-top: 0.6rem;
+  display: flex;
+  flex-direction: column;
+}
+.tag-item {
+  font-size: 1.2rem;
+}
+
+a.tag-btn {
+  padding: 0.2rem 1rem 0.2rem 0.3rem;
+  --svg-color: var(--accent-color);
+}
+
+.tag-btn:hover {
+  background-color: hsla(from var(--accent-color) h s l / 0.2);
+  border-radius: 4px;
+}
+
+.tag-btn:active {
+  color: var(--contrast-color);
+  background-color: hsla(from var(--accent-color) h s l / 0.5);
+  --svg-color: var(--contrast-color);
+}
+
+.svg {
+  width: 1rem;
+  fill: var(--svg-color); /* Change la couleur de remplissage */
 }
 
 .main {
