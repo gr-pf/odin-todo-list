@@ -14,7 +14,7 @@ export function renderTagsList(todolist) {
   for (let i = 0; i < tags.length; i++) {
     tagList.innerHTML += `
     <li class="tag-item ${tags[i]}">
-    <a href="#" class="tag-btn ${tags[i]}">   
+    <a href="#" class="tag-btn ${tags[i]}" id="${tags[i]}">   
     ${svgPound} 
     ${tags[i]}
     </a>
