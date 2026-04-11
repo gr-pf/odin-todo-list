@@ -7,6 +7,8 @@ import { Todo } from "../model/todo.js";
 import { TodoList } from "../model/todo-list.js";
 
 /**
+ *Fonction qui retourne une instance Todo depuis
+ *les données du formulaire
  *
  * @param {Object} formObject
  * @returns {Todo}
@@ -43,6 +45,8 @@ function createTodoFromForm(formObject) {
 }
 
 /**
+ *Fonction closure pour
+ *
  *
  * @param {Event} event
  */
@@ -58,6 +62,7 @@ function createSubmitHandler(todolist) {
 }
 
 /**
+ *Fonction pour fermer le formulaire après envoi
  *
  * @param {Event} event
  */
@@ -105,13 +110,18 @@ export function callForm(todolist, className, elContainer) {
  *
  * @param {TodoList} todolist
  * @param {HTMLElement} element
+ * @param {str|null} tag
  */
-export function callTodoList(todolist, element = "#anchor-todolist") {
+export function callTodoList(
+  todolist,
+  element = "#anchor-todolist",
+  tag = null,
+) {
   const elToAppend = document.querySelector(element);
   const parentElement = elToAppend.parentElement;
   parentElement.innerHTML = "";
   parentElement.append(elToAppend);
-  renderTodoList(todolist).forEach((el) =>
+  renderTodoList(todolist, tag).forEach((el) =>
     elToAppend.insertAdjacentElement("beforebegin", el),
   );
   callTagsList(todolist);
