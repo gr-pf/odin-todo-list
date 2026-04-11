@@ -4,6 +4,7 @@ import { uiState } from "./ui-state.js";
 import { renderFormTodo } from "../components/add-todo-form.js";
 import { renderTodoList } from "../components/todo-list.js";
 import { renderTagsList } from "../components/tags.js";
+import { renderMainTitle } from "../components/main-title.js";
 import { Todo } from "../model/todo.js";
 import { TodoList } from "../model/todo-list.js";
 
@@ -121,6 +122,7 @@ export function callTag(todolist, className = "tag-btn", state = uiState) {
   listElement.forEach((element) =>
     element.addEventListener("click", function () {
       state.tag = element.id;
+      callMainTitle(state);
       callTodoList(todolist, undefined, element.id);
     }),
   );
@@ -133,6 +135,7 @@ export function callTag(todolist, className = "tag-btn", state = uiState) {
 ///// de perfomane sur relayout/repaint                 /////
 /////                                                   /////
 /////////////////////////////////////////////////////////////
+
 /**
  *
  * @param {TodoList} todolist
@@ -162,4 +165,8 @@ function callTagsList(todolist, element = "#navbar-tagslist") {
     renderTagsList(todolist),
   );
   callTag(todolist);
+}
+
+function callMainTitle(state = uiState) {
+  renderMainTitle(state);
 }
