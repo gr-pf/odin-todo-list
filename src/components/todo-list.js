@@ -2,7 +2,7 @@
 
 import { renderTodo } from "./todo.js";
 import { TodoList } from "../model/todo-list.js";
-import { uiState } from "./ui-state.js";
+import { uiState } from "../controllers/ui-state.js";
 
 /**
  *
