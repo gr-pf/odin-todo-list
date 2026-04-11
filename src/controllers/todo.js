@@ -45,8 +45,8 @@ function createTodoFromForm(formObject) {
 }
 
 /**
- *Fonction closure pour
- *
+ *Fonction closure pour le callback de l'event listener du button
+ *de soumission du formulaire pour tenir compte de la todolist
  *
  * @param {Event} event
  */
@@ -71,31 +71,40 @@ function closeForm(event) {
 }
 
 /**
+ * Fonction pour attacher le formulaire au DOM et l'afficher
  *
  * @param {TodoList} todolist
  * @param {String} elContainer
  */
-function addFormToDom(todolist, elContainer) {
+function addFormToDom(todolist, elementContainer) {
   const form = renderFormTodo(
     todolist,
     createSubmitHandler(todolist),
     closeForm,
   );
-  const container = document.querySelector(`${elContainer}`);
+  const container = document.querySelector(`${elementContainer}`);
   container.appendChild(form);
   form.showModal();
 }
 
 /**
- *
+ * Fonction pour attacher un event listener (click => Appelle un formulaire)
+ * sur les bouttons "add-todo" et les ajouter au "main"
+ * "add-todo", "main"
  * @param {TodoList} todolist
  * @param {String} className
  * @param {String} elContainer
  */
-export function callForm(todolist, className, elContainer) {
-  const listEl = document.querySelectorAll(`.${className}`);
-  listEl.forEach((el) =>
-    el.addEventListener("click", () => addFormToDom(todolist, elContainer)),
+export function callForm(
+  todolist,
+  className = "add-todo",
+  elementContainer = "main",
+) {
+  const listElement = document.querySelectorAll(`.${className}`);
+  listElement.forEach((element) =>
+    element.addEventListener("click", () =>
+      addFormToDom(todolist, elementContainer),
+    ),
   );
 }
 
@@ -110,7 +119,7 @@ export function callForm(todolist, className, elContainer) {
  *
  * @param {TodoList} todolist
  * @param {HTMLElement} element
- * @param {str|null} tag
+ * @param {String|null} tag
  */
 export function callTodoList(
   todolist,
@@ -127,10 +136,15 @@ export function callTodoList(
   callTagsList(todolist);
 }
 
+/**
+ * Fonction pour mettre à jour la liste des Tags dans la navbar
+ * @param {TodoList} todolist
+ * @param {String} element
+ */
 function callTagsList(todolist, element = "#navbar-tagslist") {
-  const elToAppend = document.querySelector(element);
-  elToAppend.replaceChildren(
-    elToAppend.firstElementChild,
+  const elementToAppend = document.querySelector(element);
+  elementToAppend.replaceChildren(
+    elementToAppend.firstElementChild,
     renderTagsList(todolist),
   );
 }
