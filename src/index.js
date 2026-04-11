@@ -2,12 +2,16 @@ import { TodoList, singletonTodoList } from "./model/todo-list.js";
 import { Todo } from "./model/todo.js";
 import { renderTodo } from "./components/todo.js";
 import { renderFormTodo } from "./components/add-todo-form.js";
-import { callForm, callTodoList } from "./controllers/todo.js";
+import { callForm, callTodoList, callTag } from "./controllers/todo.js";
 import { renderTodoList } from "./components/todo-list.js";
+import { randomTodos } from "./tests/generate-todo.js";
 import "./style.css";
+import { uiState } from "./controllers/ui-state.js";
 
 const TODO_LIST = singletonTodoList;
 window.TODO_LIST = TODO_LIST;
+const globalState = uiState;
+window.globalState = globalState;
 
 const todo01 = new Todo({
   name: "todo-one1",
@@ -18,6 +22,7 @@ const todo01 = new Todo({
 });
 const todo02 = new Todo({ name: "todo-two", tags: ["cine", "tv"] });
 const todo03 = new Todo({ name: "todo-three", tags: ["food", "tv"] });
+const todo04 = new Todo({ name: "todo-three", tags: null });
 
 console.log(singletonTodoList);
 console.log(singletonTodoList.tags);
@@ -29,19 +34,15 @@ console.log(singletonTodoList.tags);
 singletonTodoList.removeTodo(todo02);
 singletonTodoList.removeTodo(todo02);
 singletonTodoList.addTodo(todo01);
+singletonTodoList.addTodo(todo04);
 console.log(singletonTodoList.todoList);
 console.log(singletonTodoList.tags);
 console.log(singletonTodoList.todoList.values().next().value.name);
 console.log("todolist:");
 console.log(singletonTodoList);
 
-const ulTodoList = document.querySelector(".todo-list");
-const pseudoTodo = document.querySelector("#anchor-todolist");
-// singletonTodoList.todoList.forEach((todo, id) =>
-//   ulTodoList.appendChild(renderTodo(todo)),
-// );
+randomTodos.forEach((todo) => singletonTodoList.addTodo(new Todo(todo)));
 
-//renderTodoList(singletonTodoList).forEach((todo) => ulTodoList.append(todo));
 console.log(renderTodoList(singletonTodoList));
 callForm(singletonTodoList, "add-todo", "main");
-callTodoList(singletonTodoList);
+callTodoList(singletonTodoList, undefined, undefined);
