@@ -1,5 +1,6 @@
 // file : src/controllers/todo.js
 
+import { uiState } from "./ui-state.js";
 import { renderFormTodo } from "../components/add-todo-form.js";
 import { renderTodoList } from "../components/todo-list.js";
 import { renderTagsList } from "../components/tags.js";
@@ -113,13 +114,15 @@ export function callForm(
  * sur les bouttons "tag-btn" de la nav-bar
  * @param {TodoList} todolist
  * @param {String} className - classe des éléments où attacher l'eventlistener
+ * @param {uiState} state - état global de l'UI
  */
-export function callTag(todolist, className = "tag-btn") {
+export function callTag(todolist, className = "tag-btn", state = uiState) {
   const listElement = document.querySelectorAll(`.${className}`);
   listElement.forEach((element) =>
-    element.addEventListener("click", () =>
-      callTodoList(todolist, undefined, element.id),
-    ),
+    element.addEventListener("click", function () {
+      state.tag = element.id;
+      callTodoList(todolist, undefined, element.id);
+    }),
   );
 }
 
@@ -136,16 +139,12 @@ export function callTag(todolist, className = "tag-btn") {
  * @param {HTMLElement} element
  * @param {String|null} tag
  */
-export function callTodoList(
-  todolist,
-  element = "#anchor-todolist",
-  tag = null,
-) {
+export function callTodoList(todolist, element = "#anchor-todolist") {
   const elToAppend = document.querySelector(element);
   const parentElement = elToAppend.parentElement;
   parentElement.innerHTML = "";
   parentElement.append(elToAppend);
-  renderTodoList(todolist, tag).forEach((el) =>
+  renderTodoList(todolist).forEach((el) =>
     elToAppend.insertAdjacentElement("beforebegin", el),
   );
   callTagsList(todolist);
