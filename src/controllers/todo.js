@@ -108,6 +108,21 @@ export function callForm(
   );
 }
 
+/**
+ * Fonction pour attacher un event listener (click => Rafraichie la todolist)
+ * sur les bouttons "tag-btn" de la nav-bar
+ * @param {TodoList} todolist
+ * @param {String} className - classe des éléments où attacher l'eventlistener
+ */
+export function callTag(todolist, className = "tag-btn") {
+  const listElement = document.querySelectorAll(`.${className}`);
+  listElement.forEach((element) =>
+    element.addEventListener("click", () =>
+      callTodoList(todolist, undefined, element.id),
+    ),
+  );
+}
+
 /////////////////////////////////////////////////////////////
 /////                                                   /////
 ///// A REIMPLEMENTER AVEC DocumentFragment             /////
@@ -147,4 +162,5 @@ function callTagsList(todolist, element = "#navbar-tagslist") {
     elementToAppend.firstElementChild,
     renderTagsList(todolist),
   );
+  callTag(todolist);
 }
