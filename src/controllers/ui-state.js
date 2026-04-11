@@ -1,4 +1,4 @@
-// file : src/components/ui-state.js
+// file : src/controllers/ui-state.js
 
 export const uiState = {
   tag: null,
