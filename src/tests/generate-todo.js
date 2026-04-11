@@ -28,15 +28,15 @@ function generateTodos(count = 1) {
   }
 
   function randomTags() {
-    if (Math.random() < 0.4) return null;
+    if (Math.random() < 0.4) return undefined;
 
     const shuffled = [...tagsPool].sort(() => 0.5 - Math.random());
-    const count = Math.floor(Math.random() * 5); // 0 à 4
+    const count = 1 + Math.floor(Math.random() * 5); // 0 à 3
     return shuffled.slice(0, count);
   }
 
   function randomDate() {
-    if (Math.random() < 0.6) return null;
+    if (Math.random() < 0.6) return undefined;
     const start = new Date(2025, 0, 1).getTime();
     const end = new Date(2027, 11, 31).getTime();
     return new Date(start + Math.random() * (end - start));
@@ -46,7 +46,7 @@ function generateTodos(count = 1) {
     name: randomName(),
     content:
       Math.random() < 0.3
-        ? null
+        ? undefined
         : "Contenu " + Math.floor(Math.random() * 1000),
     done: Math.random() < 0.5,
     priority: priorities[Math.floor(Math.random() * priorities.length)],
@@ -55,4 +55,6 @@ function generateTodos(count = 1) {
   }));
 }
 
-console.log(generateTodos(10));
+export const randomTodos = generateTodos(20);
+
+console.log(randomTodos);
