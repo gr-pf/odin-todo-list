@@ -170,3 +170,18 @@ function callTagsList(todolist, element = "#navbar-tagslist") {
 function callMainTitle(state = uiState) {
   renderMainTitle(state);
 }
+
+/**
+ * Fonction qui associe les eventlisteners sur les checkbox des todos pour
+ * indiquer qu'elles sont "done"
+ * @param {TodoList} todolist
+ */
+function checkTodo(todolist) {
+  const checkboxes = document.querySelectorAll(".todo-checkbox");
+  checkboxes.forEach((element) =>
+    element.addEventListener("change", function (event) {
+      todolist.todoList[event.target.id].toggleState();
+      callTodoList(todolist);
+    }),
+  );
+}
