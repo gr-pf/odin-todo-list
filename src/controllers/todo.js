@@ -183,9 +183,6 @@ function checkTodo(todolist) {
     element.addEventListener("change", function (event) {
       const todoId = event.target.id.slice(3);
       todolist.todoList.get(todoId).toggleState();
-      console.log(todoId);
-      console.log(todolist.todoList);
-      console.log(todolist.todoList.get(todoId));
       callTodoList(todolist);
     }),
   );
