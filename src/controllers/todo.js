@@ -151,6 +151,7 @@ export function callTodoList(todolist, element = "#anchor-todolist") {
     elToAppend.insertAdjacentElement("beforebegin", el),
   );
   callTagsList(todolist);
+  checkTodo(todolist);
 }
 
 /**
@@ -180,7 +181,11 @@ function checkTodo(todolist) {
   const checkboxes = document.querySelectorAll(".todo-checkbox");
   checkboxes.forEach((element) =>
     element.addEventListener("change", function (event) {
-      todolist.todoList[event.target.id].toggleState();
+      const todoId = event.target.id.slice(3);
+      todolist.todoList.get(todoId).toggleState();
+      console.log(todoId);
+      console.log(todolist.todoList);
+      console.log(todolist.todoList.get(todoId));
       callTodoList(todolist);
     }),
   );
