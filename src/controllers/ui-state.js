@@ -4,6 +4,7 @@ export const uiState = {
   tag: null,
   date: null,
   priority: null,
+  todoDone: false,
   sortBy: {
     active: false,
     desc: false,
