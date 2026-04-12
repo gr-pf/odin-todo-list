@@ -28,6 +28,9 @@ export function renderTodoList(todolist, state = uiState) {
  */
 function filterTodoList(todolist, state = uiState) {
   let todosToRender = Array.from(todolist.todoList.values());
+  const todoDone = uiState.todoDone ? 1 : 0;
+  todosToRender = todosToRender.filter((todo) => todo.state === todoDone);
+
   if (state.tag) {
     todosToRender = todosToRender.filter((todo) => todo.tags.has(state.tag));
   }
