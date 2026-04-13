@@ -4,6 +4,12 @@ import { TodoList, singletonTodoList } from "./model/todo-list.js";
 import { Todo } from "./model/todo.js";
 import { callForm, callTodoList } from "./controllers/todo.js";
 
+/**
+ * Initialise l'app :
+ *   - charge le local storage
+ *   - attache les event d'appel de formulaire
+ *   - génére le rendu de la todolist
+ */
 export function initApp() {
   loadStorage(singletonTodoList);
   callForm(singletonTodoList, "add-todo", "main");
