@@ -128,28 +128,16 @@ export function callTag(todolist, className = "tag-btn", state = uiState) {
   );
 }
 
-/////////////////////////////////////////////////////////////
-/////                                                   /////
-///// A REIMPLEMENTER AVEC DocumentFragment             /////
-///// ou replaceChildren et regarder les effets         /////
-///// de perfomane sur relayout/repaint                 /////
-/////                                                   /////
-/////////////////////////////////////////////////////////////
-
 /**
- *
+ * Fonction pour actualiser le rendu de la TodoList
  * @param {TodoList} todolist
  * @param {HTMLElement} element
  * @param {String|null} tag
  */
 export function callTodoList(todolist, element = "#anchor-todolist") {
-  const elToAppend = document.querySelector(element);
-  const parentElement = elToAppend.parentElement;
-  parentElement.innerHTML = "";
-  parentElement.append(elToAppend);
-  renderTodoList(todolist).forEach((el) =>
-    elToAppend.insertAdjacentElement("beforebegin", el),
-  );
+  const anchor = document.querySelector(element);
+  const container = anchor.parentElement;
+  container.replaceChildren(...renderTodoList(todolist), anchor);
   callTagsList(todolist);
   checkTodo(todolist);
 }
