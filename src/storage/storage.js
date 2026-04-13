@@ -1,6 +1,6 @@
 // file : src/storage/storage.js
 
-import { TodoList, singletonTodoList } from "../model/todo-list.js";
+import { TodoList } from "../model/todo-list.js";
 import { Todo } from "../model/todo.js";
 
 export function saveTodoList(todolist) {
