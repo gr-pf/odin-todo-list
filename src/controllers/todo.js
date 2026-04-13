@@ -7,6 +7,7 @@ import { renderTagsList } from "../components/tags.js";
 import { renderMainTitle } from "../components/main-title.js";
 import { Todo } from "../model/todo.js";
 import { TodoList } from "../model/todo-list.js";
+import { saveTodoList } from "../storage/storage.js";
 
 /**
  * Fonction qui retourne une instance Todo depuis
@@ -178,4 +179,13 @@ function checkTodo(todolist) {
       callTodoList(todolist);
     }),
   );
+}
+
+/**
+ * Attache l'appel saveTodolist() au lien "Sauver la Todolist"
+ * @param {TodoList} todolist
+ */
+export function callSaveList(todolist) {
+  const btn = document.querySelector("#save-todolist-btn");
+  btn.addEventListener("click", (event) => saveTodoList(todolist));
 }
