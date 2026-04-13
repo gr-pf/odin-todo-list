@@ -2,7 +2,7 @@
 
 import { TodoList, singletonTodoList } from "./model/todo-list.js";
 import { Todo } from "./model/todo.js";
-import { callForm, callTodoList } from "./controllers/todo.js";
+import { callForm, callTodoList, callSaveList } from "./controllers/todo.js";
 
 /**
  * Initialise l'app :
@@ -14,6 +14,7 @@ export function initApp() {
   loadStorage(singletonTodoList);
   callForm(singletonTodoList, "add-todo", "main");
   callTodoList(singletonTodoList);
+  callSaveList(singletonTodoList);
 }
 
 /**
