@@ -9,8 +9,9 @@ import { Todo } from "../model/todo.js";
 import { TodoList } from "../model/todo-list.js";
 
 /**
- *Fonction qui retourne une instance Todo depuis
- *les données du formulaire
+ * Fonction qui retourne une instance Todo depuis
+ * les données du formulaire
+ * Source : src/controllers/todo.js
  *
  * @param {Object} formObject
  * @returns {Todo}
@@ -93,9 +94,10 @@ function addFormToDom(todolist, elementContainer) {
  * Fonction pour attacher un event listener (click => Appelle un formulaire)
  * sur les bouttons "add-todo" et les ajouter au "main"
  * "add-todo", "main"
+ * Source : src/controllers/todo.js
  * @param {TodoList} todolist
- * @param {String} className
- * @param {String} elContainer
+ * @param {String} className - class des boutons
+ * @param {String} elContainer - HTMLel où rattacher le form
  */
 export function callForm(
   todolist,
@@ -113,6 +115,7 @@ export function callForm(
 /**
  * Fonction pour attacher un event listener (click => Rafraichie la todolist)
  * sur les bouttons "tag-btn" de la nav-bar
+ * Source : src/controllers/todo.js
  * @param {TodoList} todolist
  * @param {String} className - classe des éléments où attacher l'eventlistener
  * @param {uiState} state - état global de l'UI
@@ -130,9 +133,10 @@ export function callTag(todolist, className = "tag-btn", state = uiState) {
 
 /**
  * Fonction pour actualiser le rendu de la TodoList
+ * Appelle aussi callTagsList() et checkTodo()
+ * Source : src/controllers/todo.js
  * @param {TodoList} todolist
- * @param {HTMLElement} element
- * @param {String|null} tag
+ * @param {HTMLElement} element - HTMLel où rattacher la liste
  */
 export function callTodoList(todolist, element = "#anchor-todolist") {
   const anchor = document.querySelector(element);
