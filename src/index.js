@@ -2,11 +2,11 @@ import { TodoList, singletonTodoList } from "./model/todo-list.js";
 import { Todo } from "./model/todo.js";
 import { renderTodo } from "./components/todo.js";
 import { renderFormTodo } from "./components/add-todo-form.js";
-import { callForm, callTodoList, callTag } from "./controllers/todo.js";
 import { renderTodoList } from "./components/todo-list.js";
+import { callForm, callTodoList, callTag } from "./controllers/todo.js";
+import { uiState } from "./controllers/ui-state.js";
 import { randomTodos } from "./tests/generate-todo.js";
 import "./style.css";
-import { uiState } from "./controllers/ui-state.js";
 
 const TODO_LIST = singletonTodoList;
 window.TODO_LIST = TODO_LIST;
