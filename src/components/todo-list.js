@@ -11,7 +11,7 @@ import { uiState } from "../controllers/ui-state.js";
  */
 export function renderTodoList(todolist, state = uiState) {
   const listOfNode = [];
-  let todosToRender = filterTodoList(todolist, (state = uiState));
+  let todosToRender = filterTodoList(todolist, state);
 
   todosToRender.forEach((todo) => {
     listOfNode.push(renderTodo(todo));
