@@ -10,7 +10,7 @@ export function saveTodoList(todolist) {
 /**
  * Transform todolist en string pour stockage
  * dans le local storage
- * @param {Todo} todolist
+ * @param {TodoList} todolist
  * @returns {String}
  */
 function stringifyTodolist(todolist) {
