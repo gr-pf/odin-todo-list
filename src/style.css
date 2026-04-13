@@ -116,6 +116,16 @@ a.tag-btn {
   fill: var(--svg-color); /* Change la couleur de remplissage */
 }
 
+.save-todolist a:hover {
+  background-color: hsla(from var(--accent-color) h s l / 0.2);
+  border-radius: 4px;
+}
+
+.save-todolist a:active {
+  color: var(--contrast-color);
+  background-color: hsla(from var(--accent-color) h s l / 0.5);
+}
+
 .main {
   position: relative;
 }
