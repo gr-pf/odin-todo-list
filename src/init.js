@@ -21,15 +21,22 @@ export function initApp() {
  * Charge les données depuis le localstorage
  * @param {TodoList} todolist
  */
-function loadStorage(todolist = singletonTodoList) {
-  if (localStorage.getItem("todolist")) {
-    const objTodoList = JSON.parse(localStorage.getItem("todolist"));
-    Object.values(objTodoList).forEach(function (todo) {
-      if (todo.date) {
-        todo.date = new Date(todo.date);
-      }
-      const newTodo = new Todo(todo);
-      todolist.addTodo(newTodo);
-    });
+function loadStorage(todolist) {
+  const valueStored = localStorage.getItem("todolist");
+  if (valueStored) {
+    try {
+      const objTodoList = JSON.parse(valueStored);
+      Object.values(objTodoList).forEach(function (todo) {
+        if (todo.date) {
+          todo.date = new Date(todo.date);
+        }
+        const newTodo = new Todo(todo);
+        todolist.addTodo(newTodo);
+      });
+    } catch (e) {
+      return alert(
+        `Une erreur ${e} est survenue. Impossible de charger la mémoire.`,
+      );
+    }
   }
 }
